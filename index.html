@@ -164,6 +164,34 @@ footer .fb{font-family:"Cormorant Garamond";letter-spacing:.2em;color:var(--ivor
   .access .grid{grid-template-columns:1.2fr .8fr;align-items:center}
   .shot{flex:0 0 42%}
 }
+
+/* ===== facility blocks (parking / floorplan / equipment) ===== */
+.facility-block{margin-top:42px}
+.fb-title{font-family:"Noto Serif JP",serif;font-weight:500;font-size:1.12rem;color:var(--gold-l);margin-bottom:16px;letter-spacing:.04em;display:flex;align-items:center;gap:11px}
+.fb-title::before{content:"";width:24px;height:1px;background:var(--gold)}
+.zoomgrid{display:grid;gap:16px}
+.zthumb{display:block;width:100%;padding:0;border:1px solid var(--line);background:#fff;cursor:zoom-in;overflow:hidden;line-height:0}
+.zthumb img{width:100%;height:auto;transition:transform .5s ease}
+.zthumb:hover img{transform:scale(1.03)}
+.fb-note{font-size:.78rem;color:var(--ivory-soft);margin-top:12px;text-align:center;letter-spacing:.02em}
+.spec-table-wrap{overflow-x:auto}
+.spec-table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:360px;border:1px solid var(--line)}
+.spec-table th,.spec-table td{padding:13px 10px;text-align:center;border-bottom:1px solid var(--line)}
+.spec-table thead th{color:var(--gold-l);font-family:"Noto Serif JP",serif;font-weight:500;letter-spacing:.04em;background:rgba(200,168,107,.06)}
+.spec-table tbody th{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:var(--ivory);letter-spacing:.06em}
+.spec-table tbody td{color:var(--ivory-soft)}
+.spec-table tbody tr:last-child th,.spec-table tbody tr:last-child td{border-bottom:0}
+.spec-list{margin-top:18px}
+.spec-list>div{display:grid;grid-template-columns:130px 1fr;gap:6px 18px;padding:15px 4px;border-bottom:1px solid var(--line)}
+.spec-list dt{color:var(--gold-l);font-size:.9rem;letter-spacing:.04em}
+.spec-list dd{color:var(--ivory-soft);font-size:.86rem;line-height:1.85}
+.spec-list dd b{color:var(--ivory)}
+@media(max-width:600px){.spec-list>div{grid-template-columns:1fr;gap:3px}}
+/* lightbox */
+.lbx{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;background:rgba(6,12,18,.93);padding:18px}
+.lbx.open{display:flex}
+.lbx img{max-width:96vw;max-height:92vh;width:auto;height:auto;box-shadow:0 10px 44px rgba(0,0,0,.6)}
+.lbx-close{position:absolute;top:12px;right:16px;width:46px;height:46px;font-size:2rem;line-height:1;color:var(--ivory);background:none;border:0;cursor:pointer}
 </style>
 </head>
 <body>
@@ -324,6 +352,55 @@ footer .fb{font-family:"Cormorant Garamond";letter-spacing:.2em;color:var(--ivor
         </dl>
       </div>
     </div>
+
+    <!-- 駐車場 -->
+    <div class="facility-block fade">
+      <h3 class="fb-title">駐車場のご案内</h3>
+      <div class="zoomgrid">
+        <button type="button" class="zthumb" data-full="images/parkingguide1.jpg">
+          <img src="images/parkingguide1.jpg" alt="KONA OCEAN CLUB 駐車場ガイド（施設全景）" loading="lazy">
+        </button>
+        <button type="button" class="zthumb" data-full="images/parkingguide2.jpg">
+          <img src="images/parkingguide2.jpg" alt="KONA OCEAN CLUB 駐車場ガイド（区画図）" loading="lazy">
+        </button>
+      </div>
+      <p class="fb-note">BEACH は P1・P2、OCEAN は P4〜P6 が駐車区画です。画像をタップで拡大します。</p>
+    </div>
+
+    <!-- 間取り図 -->
+    <div class="facility-block fade">
+      <h3 class="fb-title">間取り図</h3>
+      <div class="zoomgrid">
+        <button type="button" class="zthumb" data-full="images/d_heimen.jpg">
+          <img src="images/d_heimen.jpg" alt="OCEAN棟 間取り図（1F・2F）" loading="lazy">
+        </button>
+        <button type="button" class="zthumb" data-full="images/abc_heimen.jpg">
+          <img src="images/abc_heimen.jpg" alt="間取り図（左端が BEACH・1F・2F）" loading="lazy">
+        </button>
+      </div>
+      <p class="fb-note">上が OCEAN、下は左端が BEACH の間取りです（1F・2F）。画像をタップで拡大します。</p>
+    </div>
+
+    <!-- 設備・アメニティ -->
+    <div class="facility-block fade">
+      <h3 class="fb-title">設備・アメニティ</h3>
+      <div class="spec-table-wrap">
+        <table class="spec-table">
+          <thead><tr><th>棟</th><th>定員</th><th>駐車場</th><th>ペット</th><th>プール</th></tr></thead>
+          <tbody>
+            <tr><th>OCEAN</th><td>8名</td><td>3台</td><td>—</td><td>あり</td></tr>
+            <tr><th>BEACH</th><td>6名</td><td>2台</td><td>可</td><td>あり</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <dl class="spec-list">
+        <div><dt>室内設備</dt><dd>Wi-Fi／テレビ／エアコン／2口IHクッキングヒーター／2ドア冷凍冷蔵庫／電子レンジ／炊飯器／湯沸かし器／ドライヤー</dd></div>
+        <div><dt>キッチン備品</dt><dd><b>食器</b>：お皿／器／コーヒーカップ／グラス／スプーン／フォーク／割りばし<br><b>調理器具</b>：鍋／フライパン／まな板／包丁／ターナー／ピーラー／ハサミ／菜箸／栓抜き／アイスペール／ボウル</dd></div>
+        <div><dt>テラス設備</dt><dd>サウナ／ジャグジー／BBQ用ガスグリル（Weber&reg; Q3200 ガスグリル）</dd></div>
+        <div><dt>アメニティ</dt><dd>バスタオル／ハンドタオル／バスローブ／スリッパ／歯磨きセット／カミソリ／ブラシ／ボディタオル／ボディソープ／シャンプー／コンディショナー</dd></div>
+      </dl>
+      <p class="fb-note">室内設備・キッチン備品・アメニティは全棟共通です。</p>
+    </div>
   </div>
 </section>
 
@@ -355,6 +432,12 @@ footer .fb{font-family:"Cormorant Garamond";letter-spacing:.2em;color:var(--ivor
   </div>
 </section>
 
+<!-- LIGHTBOX（駐車場・間取り図の拡大） -->
+<div class="lbx" id="lbx" aria-hidden="true" role="dialog" aria-modal="true" aria-label="拡大画像">
+  <button type="button" class="lbx-close" aria-label="閉じる">×</button>
+  <img src="" alt="">
+</div>
+
 <footer>
   <div class="fb">KONA OCEAN CLUB</div>
   <p>淡路島・全4棟のプライベートヴィラ ／ 運営：株式会社SUGOMoRI</p>
@@ -368,6 +451,17 @@ footer .fb{font-family:"Cormorant Garamond";letter-spacing:.2em;color:var(--ivor
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.fade').forEach(function(el){io.observe(el)});
+})();
+(function(){
+  var lb=document.getElementById('lbx'); if(!lb) return;
+  var img=lb.querySelector('img');
+  function open(src,alt){ img.src=src; img.alt=alt||''; lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; img.src=''; }
+  document.querySelectorAll('[data-full]').forEach(function(b){
+    b.addEventListener('click',function(){ var im=b.querySelector('img'); open(b.dataset.full, im?im.alt:''); });
+  });
+  lb.addEventListener('click',function(e){ if(e.target===lb || e.target.classList.contains('lbx-close')) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && lb.classList.contains('open')) close(); });
 })();
 </script>
 </body>
